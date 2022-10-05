@@ -1,5 +1,6 @@
 package es.upm.miw.iwvg_devops.code;
 
+import java.util.Comparator;
 import java.util.stream.Stream;
 
 public class Searches {
@@ -12,5 +13,10 @@ public class Searches {
                 .findFirst()
                 .get()
                 .decimal();
+    }
+    public Stream<String>  findUserIdBySomeProperFraction(int fractionDenominator) {
+        return new UsersDataBase().findAll()
+                .filter(user -> user.getFractions().stream().anyMatch(fraction -> fraction.getNumerator()<fraction.getDenominator()))
+                .map(User::getId);
     }
 }
