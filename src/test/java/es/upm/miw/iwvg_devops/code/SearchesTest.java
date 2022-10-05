@@ -20,4 +20,8 @@ public class SearchesTest {
     void testFindDecimalFractionByUserName(){
         assertEquals(Arrays.asList(new Double[]{0.0, 1.0, 2.0, 0.2, -0.5, 0.5, 1.0}),new Searches().findDecimalFractionByUserName("Oscar").collect(Collectors.toList()));
     }
+    @Test
+    void testFindUserFamilyNameByAllNegativeSignFractionDistinct(){
+        assertEquals(Arrays.asList(new String[]{}),new Searches().findUserFamilyNameByAllNegativeSignFractionDistinct().collect(Collectors.toList()));
+    }
 }
