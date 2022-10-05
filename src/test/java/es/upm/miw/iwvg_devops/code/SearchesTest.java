@@ -16,4 +16,8 @@ public class SearchesTest {
     void testFindUserIdBySomeProperFraction(){
         assertEquals(Arrays.asList(new String[]{"1","2","3","5"}),new Searches().findUserIdBySomeProperFraction(1).collect(Collectors.toList()));
     }
+    @Test
+    void testFindDecimalFractionByUserName(){
+        assertEquals(Arrays.asList(new Double[]{0.0, 1.0, 2.0, 0.2, -0.5, 0.5, 1.0}),new Searches().findDecimalFractionByUserName("Oscar").collect(Collectors.toList()));
+    }
 }

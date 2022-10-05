@@ -19,4 +19,10 @@ public class Searches {
                 .filter(user -> user.getFractions().stream().anyMatch(fraction -> fraction.getNumerator()<fraction.getDenominator()))
                 .map(User::getId);
     }
+    public Stream<Double> findDecimalFractionByUserName(String name) {
+        return new UsersDataBase().findAll()
+                .filter(user->name.equals(user.getName()))
+                .flatMap(user -> user.getFractions().stream())
+                .map(Fraction::decimal);
+    }
 }
