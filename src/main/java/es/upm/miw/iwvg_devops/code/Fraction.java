@@ -66,4 +66,34 @@ public class Fraction {
                 ", denominator=" + denominator +
                 '}';
     }
+    //isProper, isImproper, isEquivalent, add, multiply & divide.
+    public boolean isProper() {
+        return this.numerator < this.denominator;
+    }
+
+    public boolean isImproper() {
+        return this.numerator > this.denominator;
+    }
+
+    public boolean isEquivalent(Fraction fraction) {
+        return this.numerator * fraction.denominator == fraction.numerator * this.denominator;
+    }
+
+    public Fraction add(Fraction fraction) {
+        int newNumerator = (this.numerator * fraction.denominator) + (fraction.numerator * this.denominator);
+        int newDenominator = this.denominator * fraction.denominator;
+        return new Fraction(newNumerator,newDenominator);
+    }
+
+    public Fraction multiply(Fraction fraction){
+        int newNumerator = this.numerator*fraction.numerator;
+        int newDenominator = this.denominator*fraction.denominator;
+        return new Fraction(newNumerator,newDenominator);
+    }
+
+    public Fraction divide(Fraction fraction){
+        int newNumerator = this.numerator*fraction.denominator;
+        int newDenominator = this.denominator* fraction.numerator;
+        return new Fraction(newNumerator,newDenominator);
+    }
 }
