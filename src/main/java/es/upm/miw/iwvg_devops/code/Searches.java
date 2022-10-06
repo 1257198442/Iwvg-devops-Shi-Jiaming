@@ -1,18 +1,22 @@
 package es.upm.miw.iwvg_devops.code;
 
 import java.util.Comparator;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public class Searches {
     public Double findFirstDecimalFractionByUserName(String name) {
-        return new UsersDataBase().findAll()
+        Optional<Fraction> optional = new UsersDataBase().findAll()
                 .filter(user -> name.equals(user.getName()))
                 .flatMap(user -> user.getFractions().stream()
-                .filter(fraction -> fraction.getNumerator() % fraction.getDenominator() != 0)
+                        .filter(fraction -> fraction.getNumerator() % fraction.getDenominator() != 0)
                 )
-                .findFirst()
-                .get()
-                .decimal();
+                .findFirst();
+                if(optional.isPresent()){
+                    return optional.get().decimal();
+                }else  return null;
+
+
     }
     public Stream<String>  findUserIdBySomeProperFraction(int fractionDenominator) {
         return new UsersDataBase().findAll()
