@@ -84,6 +84,8 @@ public class FractionTest {
         assertEquals(true,test.getNumerator()==1&&test.getDenominator()==2);
         Fraction test1 = this.fraction.Simple(new Fraction(200,100));
         assertEquals(false,test.getNumerator()==2&&test.getDenominator()==1);
+        Fraction test2 = this.fraction.Simple(new Fraction(4,6));
+        assertEquals(false,test.getNumerator()==2&&test.getDenominator()==3);
     }
     @Test
     void testToString(){

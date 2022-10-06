@@ -11,6 +11,7 @@ public class SearchesTest {
     @Test
     void testFindFirstDecimalFractionByUserName() {
         assertEquals(0.20, new Searches().findFirstDecimalFractionByUserName("Oscar"));
+        assertEquals(null, new Searches().findFirstDecimalFractionByUserName("Antonio"));
     }
     @Test
     void testFindUserIdBySomeProperFraction(){
