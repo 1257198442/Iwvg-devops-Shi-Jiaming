@@ -18,7 +18,7 @@ public class Searches {
 
 
     }
-    public Stream<String>  findUserIdBySomeProperFraction(int fractionDenominator) {
+    public Stream<String>  findUserIdBySomeProperFraction() {
         return new UsersDataBase().findAll()
                 .filter(user -> user.getFractions().stream().anyMatch(fraction -> fraction.getNumerator()<fraction.getDenominator()))
                 .map(User::getId);
