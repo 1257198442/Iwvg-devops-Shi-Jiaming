@@ -70,4 +70,10 @@ public class FractionTest {
         Fraction new_fraction2=new Fraction(100,100);
         assertEquals(true,this.fraction.divide(new_fraction1).isEquivalent(new_fraction2));
     }
+
+    @Test
+    void testSimple(){
+        Fraction test = this.fraction.Simple(new Fraction(50,100));
+        assertEquals(true,test.getNumerator()==1&&test.getDenominator()==2);
+    }
 }
