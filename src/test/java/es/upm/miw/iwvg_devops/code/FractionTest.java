@@ -34,10 +34,13 @@ public class FractionTest {
     @Test
     void  testIsproper(){
         assertEquals(true,this.fraction.isProper());
+        this.fraction.setNumerator(200);
+        assertEquals(false,this.fraction.isProper());
     }
 
     @Test
     void testisImproper(){
+        assertEquals(false,this.fraction.isImproper());
         this.fraction.setNumerator(100);
         this.fraction.setDenominator(1);
         assertEquals(true,this.fraction.isImproper());
@@ -45,8 +48,10 @@ public class FractionTest {
 
     @Test
     void  testisEquivalent(){
-        Fraction new_fraction=new Fraction(10,1000);
-        assertEquals(true,this.fraction.isEquivalent(new_fraction));
+        Fraction new_fraction1=new Fraction(10,1000);
+        Fraction new_fraction2=new Fraction(10000,10);
+        assertEquals(true,this.fraction.isEquivalent(new_fraction1));
+        assertEquals(false,this.fraction.isEquivalent(new_fraction2));
     }
 
 
@@ -61,7 +66,9 @@ public class FractionTest {
     void  testMultiply(){
         Fraction new_fraction1=new Fraction(2,3);
         Fraction new_fraction2=new Fraction(2,300);
+        Fraction new_fraction3=new Fraction(5,4);
         assertEquals(true,this.fraction.multiply(new_fraction1).isEquivalent(new_fraction2));
+        assertEquals(false,this.fraction.multiply(new_fraction3).isEquivalent(new_fraction2));
     }
 
     @Test
@@ -75,5 +82,11 @@ public class FractionTest {
     void testSimple(){
         Fraction test = this.fraction.Simple(new Fraction(50,100));
         assertEquals(true,test.getNumerator()==1&&test.getDenominator()==2);
+        Fraction test1 = this.fraction.Simple(new Fraction(200,100));
+        assertEquals(false,test.getNumerator()==2&&test.getDenominator()==1);
+    }
+    @Test
+    void testToString(){
+        assertEquals("Fraction{numerator=1, denominator=100}",this.fraction.toString());
     }
 }
