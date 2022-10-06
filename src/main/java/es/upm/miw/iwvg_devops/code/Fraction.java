@@ -82,18 +82,29 @@ public class Fraction {
     public Fraction add(Fraction fraction) {
         int newNumerator = (this.numerator * fraction.denominator) + (fraction.numerator * this.denominator);
         int newDenominator = this.denominator * fraction.denominator;
-        return new Fraction(newNumerator,newDenominator);
+        return this.Simple(new Fraction(newNumerator,newDenominator));
     }
 
     public Fraction multiply(Fraction fraction){
         int newNumerator = this.numerator*fraction.numerator;
         int newDenominator = this.denominator*fraction.denominator;
-        return new Fraction(newNumerator,newDenominator);
+        return this.Simple(new Fraction(newNumerator,newDenominator));
     }
 
     public Fraction divide(Fraction fraction){
         int newNumerator = this.numerator*fraction.denominator;
         int newDenominator = this.denominator* fraction.numerator;
-        return new Fraction(newNumerator,newDenominator);
+        return this.Simple(new Fraction(newNumerator,newDenominator));
+    }
+    public Fraction Simple(Fraction fraction){
+        int min = fraction.numerator;
+        if (min > fraction.denominator){
+            min = fraction.denominator;
+        }
+        for (; min >= 1; --min){
+            if (fraction.numerator%min == 0 && fraction.denominator%min == 0)break;
+        }
+        return new Fraction(fraction.numerator/min,fraction.denominator/min)
+        ;
     }
 }
